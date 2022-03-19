@@ -4,8 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Entities.Concrete;
 using Core.Utilities.Results;
-using Entities;
+
 
 namespace Business.Abstract
 {

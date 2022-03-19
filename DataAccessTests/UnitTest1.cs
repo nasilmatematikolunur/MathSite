@@ -1,7 +1,6 @@
+using Core.Entities.Concrete;
 using DataAccess.Abstracts;
 using DataAccess.Concrete.EntityFramework;
-
-using Entities;
 using NUnit.Framework;
 
 namespace DataAccessTests
@@ -23,7 +22,7 @@ namespace DataAccessTests
                 Name ="Admin2",
                 Email = "admin@gmail.com",
                 Description = "asdddsadsa",
-                Password = "123abc",
+               
                 Role = 1,
             }) ;
 

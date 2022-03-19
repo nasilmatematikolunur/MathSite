@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Entities;
+using Core.Entities.Concrete;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -22,7 +23,8 @@ namespace DataAccess.Concrete.EntityFramework.Mappings
             builder.Property(u => u.Name).HasColumnName("name");
             builder.Property(u => u.Description).HasColumnName("description");
             builder.Property(u => u.Role).HasColumnName("role");
-            builder.Property(u => u.Password).HasColumnName("password");
+            builder.Property(u => u.PasswordHash).HasColumnName("password_hash");
+            builder.Property(u => u.PasswordSalt).HasColumnName("password_salt");
             builder.Property(u => u.Email).HasColumnName("email");
             builder.Property(u => u.PicturePath).HasColumnName("picture_path");
         }

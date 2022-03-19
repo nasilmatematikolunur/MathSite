@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework.Mappings;
-using Entities;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Concrete.EntityFramework.Contexts

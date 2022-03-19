@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 using Business.Abstract;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.AutoFac.Validation;
+using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Abstracts;
-using Entities;
+
 
 namespace Business.Concrete
 {

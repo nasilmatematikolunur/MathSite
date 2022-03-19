@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Core.Entities;
 
-namespace Entities
+namespace Core.Entities.Concrete
 {
     public class User : IEntity
     {
@@ -14,9 +14,10 @@ namespace Entities
         public string Email { get; set; }
         public int Role { get; set; }
         public string Description { get; set; }
-        public string Password { get; set; }
+        public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
         public string PicturePath { get; set; }
-        
+        //hexadecimal to decimal
         //ORM (Object Relational Mapping)
     }
 }
