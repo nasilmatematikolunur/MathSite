@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 using Castle.DynamicProxy;
 using Core.Extensions;
 using Core.Utilities.Interceptors;
+using Core.Utilities.IoC;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+// ReSharper disable All
 
 namespace Business.BusinessAspects.AutoFac
 {
@@ -23,6 +26,7 @@ namespace Business.BusinessAspects.AutoFac
         public SecuredOperation(string roles)
         {
             _roles = roles.Split(",");
+            _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
         }
 
         protected override void OnBefore(IInvocation invocation)

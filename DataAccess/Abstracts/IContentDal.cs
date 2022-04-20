@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.DataAccess;
-using Core.Entities.Concrete;
-
+using Entities.Concrete;
 
 namespace DataAccess.Abstracts
 {
-    public interface IUserDal : IEntityRepository<User>
+    public interface IContentDal : IEntityRepository<Content>
     {
-        List<OperationClaim> GetClaims(User user);
     }
 }

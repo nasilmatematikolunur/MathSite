@@ -17,5 +17,7 @@ namespace Business.Abstract
         IResult Delete(User user);
         IDataResult<User> Get(Expression<Func<User, bool>> filter);
         IDataResult<List<User>> GetList(Expression<Func<User, bool>> filter = null);
+        User GetByEmail(string email);
+        List<OperationClaim> GetClaims(User user);
     }
 }

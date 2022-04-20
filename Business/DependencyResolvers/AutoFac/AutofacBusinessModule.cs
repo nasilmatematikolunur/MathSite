@@ -9,6 +9,7 @@ using Business.Abstract;
 using Business.Concrete;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
+using Core.Utilities.Security.Jwt;
 using DataAccess.Abstracts;
 using DataAccess.Concrete.EntityFramework;
 
@@ -20,6 +21,10 @@ namespace Business.DependencyResolvers.AutoFac
         {
             builder.RegisterType<EfUserDal>().As<IUserDal>();
             builder.RegisterType<UserManager>().As<IUserService>();
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+            builder.RegisterType<EfContentDal>().As<IContentDal>();
+            builder.RegisterType<ContentManager>().As<IContentService>();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

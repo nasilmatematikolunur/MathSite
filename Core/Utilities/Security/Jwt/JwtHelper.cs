@@ -22,7 +22,7 @@ namespace Core.Utilities.Security.Jwt
         public JwtHelper(IConfiguration configuration)
         {
             Configuration = configuration;
-            _tokenOptions = Newtonsoft.Json.JsonConvert.DeserializeObject<TokenOptions>(Configuration.GetSection("TokenOptions").Value);
+            _tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
         }
 
         public AccessToken CreateToken(User user, List<OperationClaim> claims)

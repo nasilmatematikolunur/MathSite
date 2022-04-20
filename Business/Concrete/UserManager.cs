@@ -50,5 +50,15 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<User>>(_userDal.GetList(filter),"Başarıyla Listelendi");
         }
+
+        public User GetByEmail(string email)
+        {
+            return _userDal.Get(u => u.Email == email);
+        }
+
+        public List<OperationClaim> GetClaims(User user)
+        {
+            return _userDal.GetClaims(user);
+        }
     }
 }
