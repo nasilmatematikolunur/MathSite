@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Business.BusinessAspects.AutoFac;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstracts;
 using Entities.Concrete;
@@ -21,25 +22,25 @@ namespace Business.Concrete
             _contentDal = contentDal;
         }
 
-        [SecuredOperation("Admin,Moderatör")]
+        [SecuredOperation("Moderatör,Admin")]
         public IResult Add(Content content)
         {
             _contentDal.Add(content);
-            return new SuccessResult("Başarıyla eklendi");
+            return new SuccessResult(Messages.SuccessfullyAdded);
         }
 
         [SecuredOperation("Admin,Moderatör")]
         public IResult Update(Content content)
         {
             _contentDal.Update(content);
-            return new SuccessResult("Başarıyla Güncellendi");
+            return new SuccessResult(Messages.SuccessfullyUpdated);
         }
 
         [SecuredOperation("Admin,Moderatör")]
         public IResult Delete(Content content)
         {
             _contentDal.Delete(content);
-            return new SuccessResult("Başarıyla Silindi");
+            return new SuccessResult(Messages.SuccessfullyDeleted);
         }
 
         public IDataResult<Content> Get(Expression<Func<Content, bool>> filter)

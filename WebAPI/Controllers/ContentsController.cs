@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Core.Utilities.Helpers;
 using Entities.Concrete;
 
 namespace WebAPI.Controllers
@@ -20,15 +21,20 @@ namespace WebAPI.Controllers
             _contentService = contentService;
         }
 
+     
 
         [HttpPost("add")]
         public IActionResult Add(Content content)
         {
+            content.Slug = StringHelper.TitleToSlug(content.Title);
+            content.CreatedAt=DateTime.Now;
             var result = _contentService.Add(content);
             if (!result.Success)
-                return BadRequest(result.Message);
-            return Ok(result.Message);
+                return BadRequest(result);
+            return Ok(result);
         }
+
+        
 
     }
 }

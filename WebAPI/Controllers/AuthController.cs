@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
             var userToLogin = _authService.Login(user);
             if (!userToLogin.Success)
             {
-                return BadRequest(userToLogin.Message);
+                return BadRequest(userToLogin);
             }
 
             var token = _authService.CreateToken(userToLogin.Data);
@@ -38,7 +38,7 @@ namespace WebAPI.Controllers
                 return Ok(token.Data);
             }
 
-            return BadRequest(token.Message);
+            return BadRequest(token);
         }
 
 
@@ -48,7 +48,7 @@ namespace WebAPI.Controllers
             var userExists = _authService.UserExists(user.Email);
             if (!userExists.Success)
             {
-                return BadRequest("kullanıcı zaten kayıtlı");
+                return BadRequest(userExists);
             }
 
 
@@ -60,7 +60,7 @@ namespace WebAPI.Controllers
                 return Ok(token.Data);
             }
 
-            return BadRequest(token.Message);
+            return BadRequest(token);
         }
 
 

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Authentication;
 using System.Text;
 using System.Threading.Tasks;
+using Business.Constants;
 using Castle.DynamicProxy;
 using Core.Extensions;
 using Core.Utilities.Interceptors;
@@ -40,7 +42,7 @@ namespace Business.BusinessAspects.AutoFac
                 }
             }
 
-            throw new Exception("Yetkiniz yok");
+            throw new AuthenticationException(Messages.AuthorizationDenied);
         }
     }
 }

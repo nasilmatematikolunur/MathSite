@@ -22,8 +22,6 @@ namespace DataAccessTests
                 Name ="Admin2",
                 Email = "admin@gmail.com",
                 Description = "asdddsadsa",
-               
-                Role = 1,
             }) ;
 
             Assert.Pass();

@@ -9,16 +9,12 @@ namespace Entities.Concrete
 {
     public class Content : IEntity
     {
-        private string TitleToSlug(string title)
-        {
-            return title.ToLower().Replace(" ", "_");
-        }
-
         public int Id { get; set; }
         public int UserId { get; set; }
+
         public string Title { get; set; }
 
-        public string Slug => TitleToSlug(Title);
+        public string Slug { get; set; }
 
         public string Description { get; set; }
         public DateTime CreatedAt { get; set; }
