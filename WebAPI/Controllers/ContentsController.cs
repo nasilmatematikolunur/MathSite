@@ -1,12 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Business.Abstract;
-using Core.Utilities.Helpers;
 using Entities.Concrete;
+using static Core.Utilities.Helpers.StringHelper;
 
 namespace WebAPI.Controllers
 {
@@ -21,20 +17,58 @@ namespace WebAPI.Controllers
             _contentService = contentService;
         }
 
-     
+
 
         [HttpPost("add")]
         public IActionResult Add(Content content)
         {
-            content.Slug = StringHelper.TitleToSlug(content.Title);
-            content.CreatedAt=DateTime.Now;
+            content.Slug = TitleToSlug(content.Title);
+            content.CreatedAt = DateTime.Now;
             var result = _contentService.Add(content);
             if (!result.Success)
                 return BadRequest(result);
             return Ok(result);
         }
 
-        
+        [HttpPut("update")]
+        public IActionResult Update(Content content)
+        {
+            content.Slug = TitleToSlug(content.Title);
+            var result = _contentService.Update(content);
+            if (!result.Success)
+                return BadRequest(result);
+            return Ok(result);
+
+        }
+
+        [HttpDelete("delete")]
+        public IActionResult Delete(Content content)
+        {
+            var result = _contentService.Delete(content);
+            if (!result.Success)
+                return BadRequest(result);
+            return Ok(result);
+        }
+
+        [HttpGet("getlist")]
+        public IActionResult GetList()
+        {
+            var result = _contentService.GetList();
+            
+            if (!result.Success)
+                return BadRequest(result);
+            return Ok(result);
+        }
+
+        [HttpGet("getdetail")]
+        public IActionResult GetContentDetails()
+        {
+            var result=_contentService.GetContentDetails();
+            if (!result.Success)
+                return BadRequest(result);
+            return Ok(result);
+        }
+
 
     }
 }

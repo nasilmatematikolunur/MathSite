@@ -12,5 +12,12 @@ namespace Core.Utilities.Helpers
         {
             return title.ToLower().Replace(" ", "_");
         }
+
+        public static bool IsLike(string s1, string s2)
+        {
+            if (s1 == null || s2 == null)
+                return false;
+            return s1.ToLower().Contains(s2.ToLower());
+        }
     }
 }

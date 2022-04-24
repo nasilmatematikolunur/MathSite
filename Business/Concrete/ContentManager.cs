@@ -10,6 +10,8 @@ using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstracts;
 using Entities.Concrete;
+using Entities.Dtos;
+// ReSharper disable All
 
 namespace Business.Concrete
 {
@@ -47,10 +49,20 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<Content>(_contentDal.Get(filter));
         }
-
+        [SecuredOperation("Admin,Moderatör")]
         public IDataResult<List<Content>> GetList(Expression<Func<Content, bool>> filter = null)
         {
             return new SuccessDataResult<List<Content>>(_contentDal.GetList(filter));
+        }
+
+        public IDataResult<List<Content>> GetByUserId(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<ContentDetailDto>> GetContentDetails(Expression<Func<ContentDetailDto, bool>> filter = null)
+        {
+            return new SuccessDataResult<List<ContentDetailDto>>(_contentDal.GetContentDetailDtos());
         }
     }
 }

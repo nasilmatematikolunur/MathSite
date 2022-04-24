@@ -35,7 +35,7 @@ namespace Core.DataAccess.EntityFramework
             return context.Set<TEntity>().SingleOrDefault(filter);
         }
 
-        public List<TEntity> GetList(Expression<Func<TEntity, bool>> filter = null)
+        public virtual List<TEntity> GetList(Expression<Func<TEntity, bool>> filter = null)
         {
             using var context = new TContext();
             return filter == null
