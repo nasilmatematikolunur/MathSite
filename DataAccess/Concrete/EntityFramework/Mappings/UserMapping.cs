@@ -21,6 +21,7 @@ namespace DataAccess.Concrete.EntityFramework.Mappings
 
             builder.Property(u => u.Id).HasColumnName("id");
             builder.Property(u => u.Name).HasColumnName("name");
+            builder.Property(u => u.UserName).HasColumnName("username");
             builder.Property(u => u.Description).HasColumnName("description");
             builder.Property(u => u.PasswordHash).HasColumnName("password_hash");
             builder.Property(u => u.PasswordSalt).HasColumnName("password_salt");

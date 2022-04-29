@@ -31,6 +31,7 @@ namespace Business.Concrete
             var user = new User
             {
                 Email = userForRegisterDto.Email,
+                UserName = userForRegisterDto.Username,
                 Name = userForRegisterDto.Name,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
@@ -61,9 +62,9 @@ namespace Business.Concrete
 
 
 
-        public IResult UserExists(string email)
+        public IResult UserExists(string email,string username)
         {
-            if (_userService.GetByEmail(email) != null)
+            if (_userService.GetByEmail(email) != null || _userService.GetByUsername(username)!=null)
             {
                 return new ErrorResult(Messages.UserExists);
             }

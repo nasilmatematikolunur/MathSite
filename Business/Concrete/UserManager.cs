@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.AutoFac.Validation;
 using Core.Entities.Concrete;
@@ -26,19 +27,20 @@ namespace Business.Concrete
        public IResult Add(User user)
         { 
             _userDal.Add(user);
-            return new SuccessResult("Başarıyla Eklendi");
+            return new SuccessResult(Messages.SuccessfullyAdded);
         }
-       
+        
+        
         public IResult Update(User user)
         {
             _userDal.Update(user);
-            return new SuccessResult("Başarıyla Değiştirildi");
+            return new SuccessResult(Messages.SuccessfullyUpdated);
         }
 
         public IResult Delete(User user)
         {
             _userDal.Delete(user);
-            return new SuccessResult("Başarıyla Silindi");
+            return new SuccessResult(Messages.SuccessfullyDeleted);
         }
 
         public IDataResult<User> Get(Expression<Func<User, bool>> filter)
@@ -48,12 +50,17 @@ namespace Business.Concrete
 
         public IDataResult<List<User>> GetList(Expression<Func<User, bool>> filter = null)
         {
-            return new SuccessDataResult<List<User>>(_userDal.GetList(filter),"Başarıyla Listelendi");
+            return new SuccessDataResult<List<User>>(_userDal.GetList(filter));
         }
 
         public User GetByEmail(string email)
         {
             return _userDal.Get(u => u.Email == email);
+        }
+
+        public User GetByUsername(string username)
+        {
+            return _userDal.Get(u => u.UserName == username);
         }
 
         public List<OperationClaim> GetClaims(User user)
