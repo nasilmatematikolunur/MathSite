@@ -1,0 +1,17 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Başlık</th>
+      <th>Yazar</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let content of contents">
+      
+        <td><a href="/contens/{{content.id}}">{{ content.title }}</a></td>
+        <td>{{ content.author }}</td>
+      
+    </tr>
+  </tbody>
+</table>

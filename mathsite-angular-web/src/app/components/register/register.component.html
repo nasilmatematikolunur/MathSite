@@ -1,0 +1,94 @@
+<section
+  class="hero is-fullheight"
+  style="background-image: url({{path}}); 
+  background-size: 100%;
+ background-repeat: no-repeat;"
+>
+<div >
+  
+  <div class="section">
+    <div class="container">
+      <div class="title has-text-white">Kayıt Ol</div>
+      
+
+      <form id="register-form">
+        <div class="field">
+          <label class="label has-text-white" for="username">Kullanıcı Adı</label>
+          <div class="control has-icons-left">
+            <input
+              class="input"
+              type="text"
+              placeholder="Kullanıcı Adı"
+              name="username"
+            /><span class="icon is-left"
+              ><ng-icon name="hero-user"></ng-icon
+            ></span>
+          </div>
+          <div class="columns row-one"><div class="column">
+            <label class="label has-text-white" for="email">E-Posta</label>
+            
+              <div class="control has-icons-left">
+                <input
+                  class="input"
+                  type="email"
+                  placeholder="E-Posta"
+                  name="email"
+                /><span class="icon is-left"
+                  ><ng-icon name="hero-mail"></ng-icon
+                ></span>
+              </div>
+            </div>
+
+            <div class="column">
+              <label class="label has-text-white" for="firstName">Ad</label>
+              <div class="control has-icons-left">
+                <input class="input" type="text" placeholder="Ad" name="name" />
+                <span class="icon is-left"
+                  ><ng-icon name="hero-bookmark"></ng-icon
+                ></span>
+              </div>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column">
+              <label class="label has-text-white" for="password">Parola</label>
+              <div class="control has-icons-left">
+                <input
+                  class="input"
+                  type="password"
+                  placeholder="Parola"
+                  name="password"
+                /><span class="icon is-left">
+                  <ng-icon name="hero-lock-closed"></ng-icon>
+                </span>
+              </div>
+            </div>
+            <div class="column">
+              <label class="label has-text-white" for="retypePassword"
+                >Parolayı Doğrulayınız</label
+              >
+              <div class="control has-icons-left">
+                <input
+                  class="input"
+                  type="password"
+                  placeholder="Parola Doğrula"
+                  name="retypePassword"
+                /><span class="icon is-left"
+                  ><ng-icon name="hero-lock-closed"></ng-icon
+                ></span>
+              </div>
+            </div>
+          </div>
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-primary is-medium" type="submit">
+                Kayıt Ol
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</section>
