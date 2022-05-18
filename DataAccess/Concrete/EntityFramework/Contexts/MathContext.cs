@@ -23,11 +23,13 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
             modelBuilder.ApplyConfiguration(new OperationClaimMapping()); 
             modelBuilder.ApplyConfiguration(new UserOperationClaimMapping());
             modelBuilder.ApplyConfiguration(new ContentMapping());
+            modelBuilder.ApplyConfiguration(new ForumMapping());
         }
 
         public DbSet<User> Users { get; set; }
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
         public DbSet<Content> Contents { get; set; }
+        public DbSet<Forum> Forums { get; set; }
     }
 }

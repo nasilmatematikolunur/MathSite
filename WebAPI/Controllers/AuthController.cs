@@ -26,9 +26,27 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login(UserForLoginDto user)
+        public IActionResult LoginWithEmail(UserForLoginWithEmailDto user)
         {
-            var userToLogin = _authService.Login(user);
+            var userToLogin = _authService.LoginWithEmail(user);
+            if (!userToLogin.Success)
+            {
+                return BadRequest(userToLogin);
+            }
+
+            var token = _authService.CreateToken(userToLogin.Data);
+            if (token.Success)
+            {
+                return Ok(token.Data);
+            }
+
+            return BadRequest(token);
+        }
+
+        [HttpPost("loginU")]
+        public IActionResult LoginWithUsername(UserForLoginWithUsernameDto user)
+        {
+            var userToLogin = _authService.LoginWithUsername(user);
             if (!userToLogin.Success)
             {
                 return BadRequest(userToLogin);

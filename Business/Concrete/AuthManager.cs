@@ -41,20 +41,35 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(user, "");
         }
 
+        public IDataResult<User> LoginWithUsername(UserForLoginWithUsernameDto userForLoginDto)
+        {
+            var userToCheck = _userService.GetByUsername(userForLoginDto.Username);
+            if (userToCheck == null)
+            {
+                return new ErrorDataResult<User>(Messages.UserNotFound);
+            }
 
-        public IDataResult<User> Login(UserForLoginDto userForLoginDto)
+            if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordHash,
+                    userToCheck.PasswordSalt))
+            {
+                return new ErrorDataResult<User>(Messages.WrongPassword);
+            }
 
+            return new SuccessDataResult<User>(userToCheck);
+        }
+
+        public IDataResult<User> LoginWithEmail(UserForLoginWithEmailDto userForLoginDto)
         {
             var userToCheck = _userService.GetByEmail(userForLoginDto.Email);
             if (userToCheck == null)
             {
-                return new ErrorDataResult<User>();
+                return new ErrorDataResult<User>(Messages.UserNotFound);
             }
 
             if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordHash,
-                userToCheck.PasswordSalt))
+                    userToCheck.PasswordSalt))
             {
-                return new ErrorDataResult<User>();
+                return new ErrorDataResult<User>(Messages.WrongPassword);
             }
 
             return new SuccessDataResult<User>(userToCheck);
